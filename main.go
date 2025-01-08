@@ -60,19 +60,26 @@ func calculateDistance(length, width int, trees []Plot) int {
 }
 
 func main() {
-	// Contoh input dimensi perkebunan
+	// Koordinat pohon tetap
+	trees := []Plot{
+		{X: 3, Y: 1, Height: 0},
+		{X: 3, Y: 2, Height: 0},
+		{X: 4, Y: 2, Height: 0},
+		{X: 6, Y: 2, Height: 0},
+		{X: 5, Y: 3, Height: 0},
+	}
+
+	// Input tinggi pohon secara dinamis
+	for i := range trees {
+		fmt.Printf("Masukkan tinggi pohon pada koordinat X:%d, Y:%d: ", trees[i].X, trees[i].Y)
+		fmt.Scan(&trees[i].Height)
+	}
+
+	// Panjang dan lebar perkebunan diatur secara langsung
 	length := 6 // Panjang (60 meter / 10)
 	width := 3  // Lebar (30 meter / 10)
 
-	// Input dari pengguna untuk tinggi pohon
-	trees := []Plot{
-		{X: 3, Y: 1, Height: 5},
-		{X: 3, Y: 2, Height: 10},
-		{X: 4, Y: 2, Height: 15},
-		{X: 6, Y: 2, Height: 10},
-		{X: 5, Y: 3, Height: 4},
-	}
-
+	// Menghitung jarak total
 	totalDistance := calculateDistance(length, width, trees)
 	fmt.Printf("Total Jarak Drone: %d meter\n", totalDistance)
 }
